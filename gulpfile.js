@@ -37,37 +37,17 @@ var htmlmin = require("gulp-htmlmin");
 
 var replace = require("gulp-replace");
 
-/* The fs module provides an API for interacting with the file system */
-var fs = require("fs");
-
-/* Optimizing provided .svg images*/
-gulp.task("copy-images", function() {
-  /* Removing images from the previous build*/
-  try {
-    var files = fs.readdirSync("dist/img");
-  } catch (e) {
-    return;
-  }
-  if (files.length > 0) {
-    for (var i = 0; i < files.length; i++) {
-      var filePath = "dist/img/" + files[i];
-      if (fs.statSync(filePath).isFile()) fs.unlinkSync(filePath);
-    }
-  }
-
-  gulp.src("img/*.svg").pipe(gulp.dest("dist/img"));
-});
-
 /* Optimizing the scripts */
-gulp.task("scripts-dist", function() {
+gulp.task("scripts-dist", function(cb) {
   gulp
     .src(["js/**/*.js"])
     .pipe(babel())
     .pipe(terser())
-    .pipe(gulp.dest("dist/js"));
+    .pipe(gulp.dest("dist/js"))
+    .on("end", cb);
 });
 
-gulp.task("sassy", function() {
+gulp.task("sassy", function(cb) {
   var plugins = [
     autoprefixer({
       browsers: ["last 1 version"]
@@ -95,9 +75,10 @@ gulp.task("sassy", function() {
             collapseWhitespace: true
           })
         )
-        .pipe(gulp.dest("dist/"));
+        .pipe(gulp.dest("dist/"))
+        .on("end", cb);
     })
     .pipe(browserSync.stream());
 });
 
-gulp.task("dist", ["copy-images", "scripts-dist", "sassy"]);
+gulp.task("dist", gulp.parallel("scripts-dist", "sassy"));
