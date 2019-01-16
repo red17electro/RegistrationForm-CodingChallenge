@@ -3,17 +3,24 @@
  */
 
 window.addEventListener("load", event => {
+  const $emailInput = document.querySelector("#email");
   const $passwordInput = document.querySelector("#password");
-  const $showPasswordInput = document.querySelector("#showPass");
+  const $showPasswordCheckBox = document.querySelector("#showPass");
+  const $termsCheckBox = document.querySelector("#terms");
 
-  strengthMeter();
+  activateSumbission();
 
-  $passwordInput.addEventListener("input", strengthMeter); // register for oninput
-  $passwordInput.addEventListener("propertychange", strengthMeter); // for IE8
-  $showPasswordInput.addEventListener("change", showPassword);
+  $emailInput.addEventListener("input", activateSumbission);
+  $emailInput.addEventListener("propertychange", activateSumbission);
+
+  $passwordInput.addEventListener("input", activateSumbission);
+  $passwordInput.addEventListener("propertychange", activateSumbission);
+
+  $showPasswordCheckBox.addEventListener("change", showPassword);
+  $termsCheckBox.addEventListener("change", activateSumbission);
 });
 
-strengthMeter = e => {
+strengthMeter = () => {
   var passwordRequirements = [
     {
       regex: /.*[A-Z]/,
@@ -37,18 +44,17 @@ strengthMeter = e => {
   ];
   var errors = false;
 
-  const element = e ? e.target : document.querySelector("#password");
+  const $element = document.querySelector("#password");
 
-  const sumbissionBtn = document.querySelector("#submit");
-  const outDatedMessage = document.querySelector("#req-message");
-  if (outDatedMessage) {
-    outDatedMessage.remove();
+  const $outDatedMessage = document.querySelector("#req-message");
+  if ($outDatedMessage) {
+    $outDatedMessage.remove();
   }
 
   const successClass = "success-password";
   const failedClass = "fail-password";
 
-  const value = element.value;
+  const value = $element.value;
 
   const message = document.createElement("p");
   message.id = "req-message";
@@ -78,10 +84,11 @@ strengthMeter = e => {
   }
 
   if (!errors) {
-    message.remove;
-    sumbissionBtn.disabled = false;
+    message.remove();
+    return true;
   } else {
-    element.parentNode.insertBefore(message, element.nextSibling);
+    $element.parentNode.insertBefore(message, $element.nextSibling);
+    return false;
   }
 };
 
@@ -92,4 +99,26 @@ showPassword = e => {
   } else {
     $passwordInput.type = "password";
   }
+};
+
+activateSumbission = () => {
+  const $sumbissionBtn = document.querySelector("#submit");
+  const $emailField = document.querySelector("#email");
+  const $termsCheckBox = document.querySelector("#terms");
+  $sumbissionBtn.className = "";
+
+  if (strengthMeter()) {
+    if (validateEmail($emailField.value)) {
+      if ($termsCheckBox.checked) {
+        $sumbissionBtn.disabled = false;
+        $sumbissionBtn.className = "enabled";
+      }
+    }
+  }
+};
+
+validateEmail = email => {
+  // taken from https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 };

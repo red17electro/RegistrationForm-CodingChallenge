@@ -3,7 +3,8 @@ $colors: (
   sucess: #69e087,
   fail: #e95555,
   form: #fff,
-  formButton: #fb7753,
+  formButtonEnabled: #fb7753,
+  formButtonDisabled: #fba48c,
   buttonText: #fff,
   h3Color: #a9a9a9
 );
@@ -15,6 +16,7 @@ body,
 html {
   height: 100%;
 }
+
 body,
 h2,
 h3,
@@ -22,6 +24,7 @@ p {
   // to get rid of the margin that is added by the browser default
   margin: 0;
 }
+
 h2 {
   font-weight: 600;
 }
@@ -29,6 +32,7 @@ h3 {
   font-weight: 100;
   margin-bottom: 20px;
 }
+
 * {
   font-family: $mainfont;
 }
@@ -44,11 +48,11 @@ h3 {
     position: absolute;
     bottom: 25px;
     text-transform: uppercase;
-    background-color: color(formButton);
     min-width: 40px;
     min-height: 40px;
     width: 160px;
     height: 51px;
+    background-color: color(formButtonDisabled);
     color: color(buttonText);
     border: 0;
     white-space: normal;
@@ -85,4 +89,11 @@ h3 {
 }
 #req-message {
   font-size: 14px;
+}
+#submit.enabled {
+  background-color: color(formButtonEnabled) !important;
+}
+#termsDiv {
+  bottom: 100px;
+  position: absolute;
 }
