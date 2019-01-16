@@ -1,6 +1,11 @@
+$mainfont: sans-serif;
 $colors: (
   sucess: #69e087,
-  fail: #e95555
+  fail: #e95555,
+  form: #fff,
+  formButton: #fb7753,
+  buttonText: #fff,
+  h3Color: #767676
 );
 
 @function color($color-name) {
@@ -10,15 +15,67 @@ body,
 html {
   height: 100%;
 }
-body {
+body,
+h2,
+h3,
+p {
   // to get rid of the margin that is added by the browser default
   margin: 0;
 }
-
-.success-password{
-    color: color(sucess);
+h3 {
+  margin-bottom: 20px;
+}
+* {
+  font-family: $mainfont;
+}
+#RegistrationForm {
+  position: absolute;
+  width: 300px;
+  height: 520px;
+  margin: 10px;
+  padding: 18px;
+  background-color: color(form);
+  box-shadow: 0px 0px 8px 0px;
+  #submit {
+    position: absolute;
+    bottom: 25px;
+    text-transform: uppercase;
+    background-color: color(formButton);
+    min-width: 40px;
+    min-height: 40px;
+    width: 160px;
+    height: 51px;
+    color: color(buttonText);
+    border: 0;
+    white-space: normal;
+    font-size: 20px;
+    margin-top: 15px;
+    box-shadow: 0 0 5px 0px #888;
+    letter-spacing: 2px;
+  }
+  h3 {
+    color: color(h3Color);
+  }
+}
+#email,
+#password {
+  width: 100%;
+  height: 55px;
+  border: 1px solid lightgray;
+  border-radius: 15px;
+  font-size: 16px;
+}
+#password {
+  margin-bottom: 20px;
+}
+.success-password {
+  color: color(sucess);
+}
+.fail-password {
+  color: color(fail);
 }
 
-.fail-password{
-    color: color(fail);
+#email-label, 
+#password-label {
+  font-size: 18px;
 }

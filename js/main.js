@@ -4,9 +4,11 @@
 
 window.addEventListener("load", event => {
   const $passwordInput = document.querySelector("#password");
+  const $showPasswordInput = document.querySelector("#showPass");
 
   $passwordInput.addEventListener("input", strengthMeter); // register for oninput
   $passwordInput.addEventListener("propertychange", strengthMeter); // for IE8
+  $showPasswordInput.addEventListener("change", showPassword);
 });
 
 strengthMeter = e => {
@@ -73,9 +75,17 @@ strengthMeter = e => {
 
   if (!errors) {
     message.remove;
-    debugger;
     sumbissionBtn.disabled = false;
   } else {
     e.target.parentNode.insertBefore(message, e.target.nextSibling);
+  }
+};
+
+showPassword = e => {
+  const $passwordInput = document.querySelector("#password");
+  if (e.target.checked) {
+    $passwordInput.type = "text";
+  } else {
+    $passwordInput.type = "password";
   }
 };

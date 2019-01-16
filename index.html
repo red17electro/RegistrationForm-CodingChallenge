@@ -11,18 +11,18 @@
 
   <body>
     <main>
-      <div id="form">
+      <form id="RegistrationForm">
         <h2>Register</h2>
         <h3>Create your personal account</h3>
 
-        Email address:
+        <label id="email-label" for="email">Email address:</label><br />
         <input
           type="text"
           id="email"
           name="email"
           placeholder="example@gmail.com"
         /><br />
-        Password:
+        <label id="password-label" for="email">Password:</label><br />
         <input
           id="password"
           type="password"
@@ -31,8 +31,12 @@
           minlength="8"
           required
         /><br />
-        <input id='submit' type="submit" disabled />
-      </div>
+        <input id="showPass" type="checkbox" />
+        <label id="showPass-label" for="showPass">Show Password</label><br />
+        <button id="submit" type="submit" form="RegistrationForm" disabled>
+          Register Now
+        </button>
+      </form>
     </main>
     <script async defer charset="utf-8" src="js/main.js"></script>
   </body>
