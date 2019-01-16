@@ -1,0 +1,23 @@
+{
+  "name": "RegistrationForm-CodingChallenge",
+  "description": "This repository contains a task, which I implemented as a coding challenge for the interview.",
+  "version": "1.0.0",
+  "author": "Server Khalilov",
+  "linkedIn": "https://www.linkedin.com/in/serverkhalilov/",
+  "dependencies": {
+    "@babel/core": "^7.1.2",
+    "autoprefixer": "^9.2.1",
+    "browser-sync": "^2.26.3",
+    "cssnano": "^4.1.4",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-terser": "^1.1.5",
+    "gulp-uglifyes": "^0.2.1",
+    "http-server": "^0.11.1"
+  }
+}
