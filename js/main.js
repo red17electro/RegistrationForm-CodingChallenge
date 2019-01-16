@@ -6,6 +6,8 @@ window.addEventListener("load", event => {
   const $passwordInput = document.querySelector("#password");
   const $showPasswordInput = document.querySelector("#showPass");
 
+  strengthMeter();
+
   $passwordInput.addEventListener("input", strengthMeter); // register for oninput
   $passwordInput.addEventListener("propertychange", strengthMeter); // for IE8
   $showPasswordInput.addEventListener("change", showPassword);
@@ -35,6 +37,8 @@ strengthMeter = e => {
   ];
   var errors = false;
 
+  const element = e ? e.target : document.querySelector("#password");
+
   const sumbissionBtn = document.querySelector("#submit");
   const outDatedMessage = document.querySelector("#req-message");
   if (outDatedMessage) {
@@ -44,7 +48,7 @@ strengthMeter = e => {
   const successClass = "success-password";
   const failedClass = "fail-password";
 
-  const value = e.target.value;
+  const value = element.value;
 
   const message = document.createElement("p");
   message.id = "req-message";
@@ -77,7 +81,7 @@ strengthMeter = e => {
     message.remove;
     sumbissionBtn.disabled = false;
   } else {
-    e.target.parentNode.insertBefore(message, e.target.nextSibling);
+    element.parentNode.insertBefore(message, element.nextSibling);
   }
 };
 

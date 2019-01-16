@@ -5,7 +5,7 @@ $colors: (
   form: #fff,
   formButton: #fb7753,
   buttonText: #fff,
-  h3Color: #767676
+  h3Color: #a9a9a9
 );
 
 @function color($color-name) {
@@ -22,7 +22,11 @@ p {
   // to get rid of the margin that is added by the browser default
   margin: 0;
 }
+h2 {
+  font-weight: 600;
+}
 h3 {
+  font-weight: 100;
   margin-bottom: 20px;
 }
 * {
@@ -64,6 +68,7 @@ h3 {
   border: 1px solid lightgray;
   border-radius: 15px;
   font-size: 16px;
+  padding-left: 5px;
 }
 #password {
   margin-bottom: 20px;
@@ -74,8 +79,10 @@ h3 {
 .fail-password {
   color: color(fail);
 }
-
-#email-label, 
+#email-label,
 #password-label {
   font-size: 18px;
+}
+#req-message {
+  font-size: 14px;
 }
