@@ -6,17 +6,18 @@ This repository contains a task, which I implemented as a coding challenge for t
 
 I had to implement a registration form with a minimal design:
 
-![Design of the widget](conditions/Reqs.png)
+![Design of the form](conditions/Reqs.jpg)
 
 ## Result
 
-This is the final result, which took me about **~4.5 hours** to implement.
+This is the final result, which took me about **~4.5 hours** to implement. I implemented all the basic and bonus requirements. Regarding the testing, I was not able to do it in time.
+
 
 Improvement decisions, which I took:
 
 - Activate / Deactivate the "Submit" button, depending on the entrance data;
 
-![Design of the widget](conditions/result.PNG)
+![Design of the form](conditions/result.PNG)
 
 ## Getting Started
 
