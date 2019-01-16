@@ -1,0 +1,17 @@
+body,
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.success-password {
+  color: #69e087;
+}
+
+.fail-password {
+  color: #e95555;
+}
+/*# sourceMappingURL=styles.css.map */

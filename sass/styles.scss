@@ -1,0 +1,24 @@
+$colors: (
+  sucess: #69e087,
+  fail: #e95555
+);
+
+@function color($color-name) {
+  @return map-get($map: $colors, $key: $color-name);
+}
+body,
+html {
+  height: 100%;
+}
+body {
+  // to get rid of the margin that is added by the browser default
+  margin: 0;
+}
+
+.success-password{
+    color: color(sucess);
+}
+
+.fail-password{
+    color: color(fail);
+}
